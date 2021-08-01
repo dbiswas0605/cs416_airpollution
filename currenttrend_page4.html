@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src ="./javascripts/currenttrend.js"></script>
+<link rel="stylesheet" href="https://gispub.epa.gov/air/trendsreport/2021/dist/css/etrends.min.css">
+<style>
+
+  body {
+      font: 14px Arial,sans-serif; 
+      margin: 0px;
+  }
+  .header {
+      padding: 10px 20px;
+      background: #acb3b9; 
+  }
+  .header h1 {
+      font-size: 24px;
+  }
+  .container {
+      width: 100%;
+      background: #f2f2f2; 
+  }
+  .nav, .section {
+      float: left; 
+      padding: 20px;
+      min-height: 170px;
+      box-sizing: border-box;
+  }
+  .nav {            
+      width: 20%;             
+      background: #d4d7dc;
+  }
+  .section {
+      width: 80%;
+  }
+  .nav ul {
+      list-style: none; 
+      line-height: 24px;
+      padding: 0px; 
+  }
+  .nav ul li a {
+      color: #333;
+  }    
+  .clearfix:after {
+      content: ".";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+  }
+  .footer {
+      background: #acb3b9;            
+      text-align: center;
+      padding: 5px;
+  }
+
+
+.fixedDiv {
+  position: absolute;
+  padding: 4px;
+  border: 1px solid gray;	
+  border-radius: 4px;
+  background-color: lightblue;
+}
+</style>
+
+<html lang = "en">
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>A Study On Health, Economic, Psychological and Social cost of Air pollution.</h1>
+        </div>
+        <div class="wrapper clearfix">
+            <div class="nav">
+                <ul>
+                    <li>1.<a href="causesofdeath_page1.html">How Healthy are we?</a></li>
+                    <li>2.<a href="causesofpollution_page2.html">Major Causes of Pollution?</a></li>
+                    <li>3.<a href="impactofpollution_page3.html">Where are we going?</a></li>
+                    <li>4.<a href="currenttrend_page4.html"><b>The Trend. Can we do it?</b></a></li>
+                </ul>
+            </div>
+            <div class="section">
+                A DECREASING TREND <a href = "https://www.epa.gov/air-trends/air-quality-national-summary">SUMMARY</a> BELOW.
+                <Table>
+                    <tr>
+                        <td><div id="my_dataviz"></div></td>
+                        <td style="vertical-align:top"> 
+                            <div id = "narration"> 
+                                <p>
+                                    Since 1970, implementation of the Clean Air Act and technological advances from American innovators have dramatically improved air quality in the U.S. Since that time, the combined emissions of criteria and precursor pollutants have dropped by 78%. Cleaner air provides important public health benefits, and we commend our state, local, and industry partners for helping further long-term improvement in our air quality
+                                </p>
+                                <p>
+                                    Air Quality <a href = "https://gispub.epa.gov/air/trendsreport/2021/#home">Trends</a> Show Clean Air Progress
+                                </p>
+                                <p>
+                                    <ul>
+                                        <li>Carbon Monoxide (CO) 8-Hour, <i class="icon icon-arrow-down" aria-hidden="true" title="Down"></i> 73%</li>
+                                        <li>Lead (Pb) 3-Month Average, <i class="icon icon-arrow-down" aria-hidden="true" title="Down"></i> 86% <small>(from 2010)</small></li>
+                                        <li>Nitrogen Dioxide (NO<sub>2</sub>) 1-Hour, <i class="icon icon-arrow-down" aria-hidden="true" title="Down"></i> 54%</li> 
+                                        <li>Ozone (O<sub>3</sub>) 8-Hour, <i class="icon icon-arrow-down" aria-hidden="true" title="Down"></i> 25%</li> 
+                                        <li>Particulate Matter 10 microns (PM<sub>10</sub>) 24-Hour, <i class="icon icon-arrow-down" aria-hidden="true" title="Down"></i> 26%</li> 
+                                        <li>Particulate Matter 2.5 microns (PM<sub>2.5</sub>) Annual, <i class="icon icon-arrow-down" aria-hidden="true" title="Down"></i> 41% <small>(from 2000)</small></li> 
+                                        <li>Sulfur Dioxide (SO<sub>2</sub>) 1-Hour, <i class="icon icon-arrow-down" aria-hidden="true" title="Down"></i> 91%</li>
+                                    </ul>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </Table>
+            </div>
+        </div>
+        <div class="footer">
+            <p>Author : Debabrata Biswas | dbiswas3@illinois.edu | MCS-DS</p>
+        </div>
+    </div>
+    <script>
+      CreateTrendChart()
+    </script>   
+</body>
+
+
+
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="./javascripts/causesofpollution.js"></script>
+<script src="./javascripts/annotation.js"></script>
+<script src="./javascripts/showhideline.js"></script>
+<style>
+
+    body {
+        font: 14px Arial,sans-serif; 
+        margin: 0px;
+    }
+    .header {
+        padding: 10px 20px;
+        background: #acb3b9; 
+    }
+    .header h1 {
+        font-size: 24px;
+    }
+    .container {
+        width: 100%;
+        background: #f2f2f2; 
+    }
+    .nav, .section {
+        float: left; 
+        padding: 20px;
+        min-height: 170px;
+        box-sizing: border-box;
+    }
+    .nav {            
+        width: 20%;             
+        background: #d4d7dc;
+    }
+    .section {
+        width: 80%;
+    }
+    .nav ul {
+        list-style: none; 
+        line-height: 24px;
+        padding: 0px; 
+    }
+    .nav ul li a {
+        color: #333;
+    }    
+    .clearfix:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+    .footer {
+        background: #acb3b9;            
+        text-align: center;
+        padding: 5px;
+    }
+
+
+.fixedDiv {
+    position: absolute;
+    padding: 4px;
+    border: 1px solid gray;	
+    border-radius: 4px;
+    background-color: lightblue;
+}
+</style>
+
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="./css/button.css">
+    <style>
+        .w3-btn {
+            margin-bottom: 10px;
+        }
+
+        #inner {
+            width: 50%;
+            height: 50%;
+            top: 100;
+            margin: 1 auto;
+            position: relative;
+            background: orange;
+        }
+    </style>
+
+    <style>
+        body {
+            font: 14px Arial, sans-serif;
+            margin: 0px;
+        }
+
+        .header {
+            padding: 10px 20px;
+            background: #acb3b9;
+        }
+
+        .header h1 {
+            font-size: 24px;
+        }
+
+        .container {
+            width: 100%;
+            background: #f2f2f2;
+        }
+
+        .nav,
+        .section {
+            float: left;
+            padding: 20px;
+            min-height: 170px;
+            box-sizing: border-box;
+        }
+
+        .nav {
+            width: 20%;
+            background: #d4d7dc;
+        }
+
+        .section {
+            width: 80%;
+        }
+
+        .nav ul {
+            list-style: none;
+            line-height: 24px;
+            padding: 0px;
+        }
+
+        .nav ul li a {
+            color: #333;
+        }
+
+        .clearfix:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        .footer {
+            background: #acb3b9;
+            text-align: center;
+            padding: 5px;
+        }
+
+
+        .fixedDiv {
+            position: absolute;
+            padding: 4px;
+            border: 1px solid gray;
+            border-radius: 4px;
+            background-color: lightblue;
+        }
+    </style>
+
+
+</head>
+
+<body onload='CreateMainChart()'>
+    <div class="container">
+        <div class="header">
+            <h1><b>A Study On Health, Economic, Psychological and Social cost of Air pollution.</b></h1>
+        </div>
+        <div class="wrapper clearfix">
+            <div class="nav">
+                <ul>
+                    <li>1.<a href="causesofdeath_page1.html">How Healthy are we?</a></li>
+                    <li>2.<a href="causesofpollution_page2.html"><b>Major Causes of Pollution?</b></a></li>
+                    <li>3.<a href="impactofpollution_page3.html">Where are we going?</a></li>
+                    <li>4.<a href="currenttrend_page4.html">The Trend. Can we do it?</a></li>
+                </ul>
+            </div>
+            <div class="section">
+                <div id="my_buttons">
+                    <button id="coalbutton" class="w3-button w3-red w3-border w3-border-red w3-round-large"
+                        onclick="showhide(this)">Coal</button>
+                    <button id="oilbutton" class="w3-button w3-pink w3-border w3-border-pink w3-round-large"
+                        onclick="showhide(this)">Petroleum Oil</button>
+                    <button id="flarbutton" class="w3-button w3-olive w3-border w3-border-olive w3-round-large"
+                        onclick="showhide(this)">Flaring</button>
+                    <button id="gasbutton" class="w3-button w3-green w3-border w3-border-green w3-round-large"
+                        onclick="showhide(this)">Natural Gas</button>
+                    <button id="cementbutton" class="w3-button w3-purple w3-border w3-border-purple w3-round-large"
+                        onclick="showhide(this)">Cement</button>
+                    <button id="otherbutton" class="w3-button w3-magenta w3-border w3-border-magenta w3-round-large"
+                        onclick="showhide(this)">Other</button>
+                </div>           
+                <Table>
+                    <tr>
+                        <td><div id="my_dataviz"></div></td>
+                        <td style="vertical-align:top"> 
+                            <div id = "narration"> 
+                                <p>
+                                    Air pollution is the release of gases and small fragments of human-made particles and chemicals into
+                                    the air, the concentration of which is harmful to all living and breathing creatures on this planet.
+                                    Upon studying global warming, researchers have determined that air pollution is a significant
+                                    contributor to this problem.
+                                </p>
+
+                                <p>
+                                    How have global emissions of carbon dioxide (CO2) changed over time?
+                                    In this chart we see the growth of global emissions from the mid-18th century through to today.
+                                    We see that prior to the Industrial Revolution, emissions were very low. Growth in emissions was still relatively slow until the mid-20th century. In 1950 the world emitted 6 billion tonnes of CO2.
+                                    By 1990 this had almost quadrupled to 22 billion tonnes. Emissions have continued to grow rapidly; we now emit over 36 billion tonnes each year.
+
+                                    Emissions growth has slowed over the last few years, but they have yet to reach their peak.
+                                </p>
+
+
+                            </div>
+                        </td>
+                    </tr>
+                </Table>            
+            </div>
+        </div>
+        <div class="footer">
+            <p>Author : Debabrata Biswas | dbiswas3@illinois.edu | MCS-DS</p>
+        </div>
+    </div>
+</body>
+
+</html>

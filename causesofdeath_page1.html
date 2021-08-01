@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src ="./javascripts/causesofdeathchart.js"></script>
+<script src ="./Javascripts/dropdown.js"></script>
+<link rel="stylesheet" href="./css/dropdown.css">
+<link rel="stylesheet" href="./css/nextprevbutton.css">
+<style>
+
+    body {
+        font: 14px Arial,sans-serif; 
+        margin: 0px;
+    }
+    .header {
+        padding: 10px 20px;
+        background: #acb3b9; 
+    }
+    .header h1 {
+        font-size: 24px;
+    }
+    .container {
+        width: 100%;
+        background: #f2f2f2; 
+    }
+    .nav, .section {
+        float: left; 
+        padding: 20px;
+        min-height: 170px;
+        box-sizing: border-box;
+    }
+    .nav {            
+        width: 20%;             
+        background: #d4d7dc;
+    }
+    .section {
+        width: 80%;
+    }
+    .nav ul {
+        list-style: none; 
+        line-height: 24px;
+        padding: 0px; 
+    }
+    .nav ul li a {
+        color: #333;
+    }    
+    .clearfix:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+    .footer {
+        background: #acb3b9;            
+        text-align: center;
+        padding: 5px;
+    }
+
+
+.fixedDiv {
+    position: absolute;
+    padding: 4px;
+    border: 1px solid gray;	
+    border-radius: 4px;
+    background-color: lightblue;
+}
+</style>
+
+<html lang = "en">
+
+<body onload='init(2017)'>
+    <div class="container">
+        <div class="header">
+            <h1>A Study On Health, Economic, Psychological and Social cost of Air pollution.</h1>
+        </div>
+        <div class="wrapper clearfix">
+            <div class="nav">
+                <ul>
+                    <li>1.<a href="causesofdeath_page1.html"><b>How Healthy are we?</b></a></li>
+                    <li>2.<a href="causesofpollution_page2.html">Major Causes of Pollution?</a></li>
+                    <li>3.<a href="impactofpollution_page3.html">Where are we going?</a></li>
+                    <li>4.<a href="currenttrend_page4.html">The Trend. Can we do it?</a></li>
+                </ul>
+            </div>
+            <div class="section">
+                <button onclick="showMenu()" class="dropbtn">Select Year</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#" onclick="OnYearSelected(1990)">1990</a>
+                    <a href="#" onclick="OnYearSelected(1991)">1991</a>
+                    <a href="#" onclick="OnYearSelected(1992)">1992</a>
+                    <a href="#" onclick="OnYearSelected(1993)">1993</a>
+                    <a href="#">----</a>
+                    <a href="#" onclick="OnYearSelected(2003)">2003</a>
+                    <a href="#" onclick="OnYearSelected(2004)">2004</a>
+                    <a href="#" onclick="OnYearSelected(2005)">2005</a>
+                    <a href="#">----</a>
+                    <a href="#" onclick="OnYearSelected(2012)">2012</a>
+                    <a href="#" onclick="OnYearSelected(2013)">2013</a>
+                    <a href="#" onclick="OnYearSelected(2014)">2014</a>
+                    <a href="#" onclick="OnYearSelected(2015)">2015</a>
+                    <a href="#" onclick="OnYearSelected(2016)">2016</a>
+                    <a href="#" onclick="OnYearSelected(2017)">2017</a>
+                </div>
+                <Table>
+                    <tr>
+                        <td><div id="my_dataviz"></div></td>
+                        <td style="vertical-align:top"> 
+                            <div id = "narration"> 
+                                <p>
+                                    Air pollution accounts for 1 in 8 deaths worldwide - approximately 7 million deaths in 2012, 
+                                    according to new data from the World Health Organization (WHO). The findings, released in late March, 
+                                    doubled previous estimates from just a few years ago in 2008. 
+                                    WHO now characterizes air pollution as "the world's largest single environmental health risk."
+                                </p>
+                                <p>
+                                    "The risks from air pollution are now far greater than previously thought or understood, 
+                                    particularly for heart disease and strokes," said Dr. Maria Neira, director of WHOs Department for Public Health, 
+                                    Environmental and Social Determinants of Health. "Few risks have a greater impact on global health today than air 
+                                    pollution; the evidence signals the need for concerted action to clean up the air we all breathe."
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </Table>
+            </div>
+        </div>
+        <div class="footer">
+            <p>Author : Debabrata Biswas | dbiswas3@illinois.edu | MCS-DS</p>
+        </div>
+    </div>
+    <script>
+        function init(year)
+        {
+            d3.csv("./data/annual-number-of-deaths-by-cause_2.csv", function(data)
+            {
+                var sortedAndFilteredData = GetYearSorted(data, year);
+                DrawChart(sortedAndFilteredData);
+            });
+
+            CausesOfDeathBanner();
+        }
+
+        function OnYearSelected(yr)
+        {
+            d3.select("svg").remove()
+            init(yr);
+        }
+    </script>    
+</body>
+</html>

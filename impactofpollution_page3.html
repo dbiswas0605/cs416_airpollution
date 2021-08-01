@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src ="./javascripts/impactofpollution.js"></script>
+<link rel="stylesheet" href="https://gispub.epa.gov/air/trendsreport/2021/dist/css/etrends.min.css">
+<style>
+
+  body {
+      font: 14px Arial,sans-serif; 
+      margin: 0px;
+  }
+  .header {
+      padding: 10px 20px;
+      background: #acb3b9; 
+  }
+  .header h1 {
+      font-size: 24px;
+  }
+  .container {
+      width: 100%;
+      background: #f2f2f2; 
+  }
+  .nav, .section {
+      float: left; 
+      padding: 20px;
+      min-height: 170px;
+      box-sizing: border-box;
+  }
+  .nav {            
+      width: 20%;             
+      background: #d4d7dc;
+  }
+  .section {
+      width: 80%;
+  }
+  .nav ul {
+      list-style: none; 
+      line-height: 24px;
+      padding: 0px; 
+  }
+  .nav ul li a {
+      color: #333;
+  }    
+  .clearfix:after {
+      content: ".";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+  }
+  .footer {
+      background: #acb3b9;            
+      text-align: center;
+      padding: 5px;
+  }
+
+
+.fixedDiv {
+  position: absolute;
+  padding: 4px;
+  border: 1px solid gray;	
+  border-radius: 4px;
+  background-color: lightblue;
+}
+</style>
+
+<html lang = "en">
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>A Study On Health, Economic, Psychological and Social cost of Air pollution.</h1>
+        </div>
+        <div class="wrapper clearfix">
+            <div class="nav">
+                <ul>
+                    <li>1.<a href="causesofdeath_page1.html">How Healthy are we?</a></li>
+                    <li>2.<a href="causesofpollution_page2.html">Major Causes of Pollution?</a></li>
+                    <li>3.<a href="impactofpollution_page3.html"><B>Where are we going?</B></a></li>
+                    <li>4.<a href="currenttrend_page4.html">The Trend. Can we do it?</a></li>
+                </ul>
+            </div>
+            <div class="section">
+                A REVIEW OF PSYCHOLOGICAL, ECONOMIC AND SOCIAL EFFECT
+                <Table>
+                    <tr>
+                        <td><div id="my_dataviz"></div></td>
+                        <td style="vertical-align:top"> 
+                            <div id = "narration"> 
+                                <p>
+                                    Air pollution’s destructive consequences go beyond breathing. Research links it to anxiety, dementia, missed work, criminal behavior, and much more.
+                                </p>
+                                <p>
+                                    Now, a new, large-scale review demonstrates that air pollution is not only detrimental to people’s physiological health, but also their psychological health. The review, conducted by MIT Sloan assistant professorJackson Lu systematically examines the psychological, economic, and social effects of air pollution. His findings appear in the April edition of “Current Opinion in Psychology.”
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </Table>
+            </div>
+        </div>
+        <div class="footer">
+            <p>Author : Debabrata Biswas | dbiswas3@illinois.edu | MCS-DS</p>
+        </div>
+    </div>
+    <script>
+      CreateImpactData()
+    </script>   
+</body>
+
+
+
+</html>
