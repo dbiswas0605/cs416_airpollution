@@ -145,50 +145,85 @@ function CreateTrendChart() {
             .attr('x', width - 20)
             .attr('y', 20)
             .attr('height', 20)
-            .attr('width', 30)
+            .attr('width', 50)
             .style('fill', function (d) { return color(1) })
+
+        svg.append('text')
+            .attr('x', width - 20)
+            .attr('y', 35)
+            .text('Lead')
 
         svg.append('rect').attr('id', 'rect_id2')
             .attr('x', width - 20)
             .attr('y', 50)
             .attr('height', 20)
-            .attr('width', 30)
+            .attr('width', 50)
             .style('fill', function (d) { return color(2) })
+
+            svg.append('text')
+            .attr('x', width - 20)
+            .attr('y', 65)
+            .text('CO')            
 
         svg.append('rect').attr('id', 'rect_id3')
             .attr('x', width - 20)
             .attr('y', 80)
             .attr('height', 20)
-            .attr('width', 30)
+            .attr('width', 50)
             .style('fill', function (d) { return color(3) })
+
+            svg.append('text')
+            .attr('x', width - 20)
+            .attr('y', 95)
+            .text('NO2')            
 
         svg.append('rect').attr('id', 'rect_id4')
             .attr('x', width - 20)
             .attr('y', 110)
             .attr('height', 20)
-            .attr('width', 30)
+            .attr('width', 50)
             .style('fill', function (d) { return color(4) })
+
+            svg.append('text')
+            .attr('x', width - 20)
+            .attr('y', 125)
+            .text('O3')            
 
         svg.append('rect').attr('id', 'rect_id5')
             .attr('x', width - 20)
             .attr('y', 140)
             .attr('height', 20)
-            .attr('width', 30)
+            .attr('width', 50)
             .style('fill', function (d) { return color(5) })
+
+            svg.append('text')
+            .attr('x', width - 20)
+            .attr('y', 155)
+            .text('PM 2.5')            
 
         svg.append('rect').attr('id', 'rect_id6')
             .attr('x', width - 20)
             .attr('y', 170)
             .attr('height', 20)
-            .attr('width', 30)
+            .attr('width', 50)
             .style('fill', function (d) { return color(6) })
+
+            svg.append('text')
+            .attr('x', width - 20)
+            .attr('y', 185)
+            .text('PM 10')            
 
         svg.append('rect').attr('id', 'rect_id7')
             .attr('x', width - 20)
             .attr('y', 200)
             .attr('height', 20)
-            .attr('width', 30)
+            .attr('width', 50)
             .style('fill', function (d) { return color(7) })
+
+            svg.append('text')
+            .attr('x', width - 20)
+            .attr('y', 215)
+            .text('SO2')            
 
         d3.selectAll('rect').on('mouseover', function () { GrowRect(this); })
         d3.selectAll('rect').on('mouseout', function () { ResetRect(this); })
@@ -321,13 +356,13 @@ function CreateTrendChart() {
         d3.select("#" + r.id)
             .transition()
             .duration(1000)
-            .attr('width', 60);
+            .attr('width', 90);
     }
 
     function ResetRect(r) {
         d3.select("#" + r.id)
             .transition()
             .duration(1000)
-            .attr('width', 30);
+            .attr('width', 50);
     }
 }

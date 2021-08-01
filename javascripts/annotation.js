@@ -170,3 +170,4 @@ function OtherToolTip(x,y)
     .append('tspan')
     .text("Other") 
 }
+

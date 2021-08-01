@@ -64,6 +64,51 @@ function CreateMainChart() {
         .style('stroke-width', '1');
 
 
+        d3.select("body")
+        .append("div")
+        .attr('id', 'causeofdeathtooltip')
+        .style("top", 280 + "px")
+        .style("left", 750 + "px")
+        .style('opacity',0)
+        .attr("class", "fixedDiv")
+        .html("<p>Air pollution is the leading cause of death in developing countries</p><img src='./images/april_ambient_air_pollution.jpg'></img>");
+
+
+
+    d3.selectAll('circle').on('mouseover', function(){showbox(this)})
+    d3.selectAll('circle').on('mouseout', function(){hidebox(this)})
+
+
+    function showbox(element)
+    {
+        var msg;
+        if(element.id == "my_cirCoal")
+            msg = "The coal has been a primary source of fuel since 1750. It's still used to date for power generation."
+        else if(element.id == "my_cirOil")
+            msg = "Since its discovery in 1875. From then petroleum has been used to gernerate energy and primary fuel for auto."
+        else if (element.id == "my_cirCement")
+            msg = "The cement industry is one of the main producers of carbon dioxide. During 1900 we started realising its effect on air pollution."
+        else if (element.id == "my_cirGas")
+            msg = "Natuaral Gas has been used to light the streets in 1836 in Britain. Today it's used in industrial, power gereration and domestic use."
+        else if (element.id == "my_cirFlar")
+            msg = "Flares emit a host of air pollutants, depending on the hemical composition of the gas being burnt. Flaring results in hydrogen sulfide emissions."
+        else if (element.id == "my_cirOther")
+            msg = "Other causeses air pollution includes wildfires, chemicals burning of garbage waste,agricultural activities,chemical/synthetic products, etc. "
+
+            d3.select("#causeofdeathtooltip")
+            .style("opacity", "1")
+            .style("top", (event.pageY) + 30 + "px").style("left", (event.pageX) + "px")
+            .html(msg);
+    }
+    
+    function hidebox(element)
+    {
+        d3.select("#causeofdeathtooltip")
+        .style("opacity", "0")
+    }
+
+
+
     //let arrYears = new Array ();
 
     let arrOilEmission = new Array();
