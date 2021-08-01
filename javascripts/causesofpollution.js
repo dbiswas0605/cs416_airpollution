@@ -71,13 +71,11 @@ function CreateMainChart() {
         .style("left", 750 + "px")
         .style('opacity',0)
         .attr("class", "fixedDiv")
-        .html("<p>Air pollution is the leading cause of death in developing countries</p><img src='./images/april_ambient_air_pollution.jpg'></img>");
-
+        .html("<p>Air pollution is the leading cause of death in developing countries");
 
 
     d3.selectAll('circle').on('mouseover', function(){showbox(this)})
     d3.selectAll('circle').on('mouseout', function(){hidebox(this)})
-
 
     function showbox(element)
     {
