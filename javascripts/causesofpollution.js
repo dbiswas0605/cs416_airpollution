@@ -10,6 +10,7 @@ function CreateMainChart() {
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
+        .style('background-color', '#D3D3D3')
         .append("g")
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
