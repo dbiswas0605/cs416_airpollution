@@ -1,4 +1,4 @@
-function DrawChart(data)
+function DrawChart(data, year)
 {
     var margin = {top:15, left:150, right:50, botton:30};
     var width = 600 - margin.left - margin.right;
@@ -124,6 +124,13 @@ function DrawChart(data)
             .text("Causes of Death")
             .attr('transform', 'rotate(90)')
 
+            svg.append('text')
+            .style('font-size' , '30')
+            .style('visibility', 'visible')
+            .style('fill', 'white')
+            .attr('x',margin.left + 150)
+            .attr('y', height -100)
+            .text(year)
 }
 
 

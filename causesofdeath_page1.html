@@ -70,7 +70,7 @@
 <body onload='init(2017)'>
     <div class="container">
         <div class="header">
-            <h1>A Study On Health, Economic, Psychological and Social cost of Air pollution.</h1>
+            <h1>A Study on Health, Economic, Psychological and Social cost of Air pollution.</h1>
         </div>
         <div class="wrapper clearfix">
             <div class="nav">
@@ -136,7 +136,7 @@
             d3.csv("./data/annual-number-of-deaths-by-cause_2.csv", function(data)
             {
                 var sortedAndFilteredData = GetYearSorted(data, year);
-                DrawChart(sortedAndFilteredData);
+                DrawChart(sortedAndFilteredData, year);
             });
 
             CausesOfDeathBanner();
